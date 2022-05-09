@@ -13,6 +13,7 @@ import { tap, catchError } from 'rxjs/operators';
 export class TransactionsComponent implements OnInit {
 
   transactions: any;
+  dashboard: any;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -25,6 +26,15 @@ export class TransactionsComponent implements OnInit {
     this.http.get('/api/transaction', httpOptions).subscribe(data => {
       this.transactions = data;
       console.log(this.transactions);
+    }, err => {
+      if(err.status === 401) {
+        this.router.navigate(['login']);
+      }
+    });
+
+    this.http.get('/api/dashboard', httpOptions).subscribe(data => {
+      this.dashboard = data;
+      console.log(this.dashboard);
     }, err => {
       if(err.status === 401) {
         this.router.navigate(['login']);

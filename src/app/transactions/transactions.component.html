@@ -1,5 +1,106 @@
 <div class="container">
-    <h1>Transactions List <button class="btn btn-success" (click)="logout()">Logout</button></h1>
+  <h1>Transactions <button class="btn btn-success" (click)="logout()">Logout</button></h1>
+  <div class="main-content" style="padding:1em;">
+    <div class="row" >
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding:1em;">
+          <div class="card card-stats" style="background-color:rgb(134, 52, 164);color:antiquewhite;">
+              <div class="card-body ">
+                  <div class="row">
+                      <div class="col-5 col-md-4">
+                          <div class="icon-big text-center icon-warning">
+                            <i class="fa fa-money" style="font-size:48px"></i>
+                          </div>
+                      </div>
+                      <div class="col-7 col-md-8">
+                          <div class="numbers">
+                            <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Income</b></p>
+                            <p class="card-title" style="text-align: center;font-size:24px;">
+                              <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
+                              {{dashboard.income}}
+                            </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding:1em;">
+        <div class="card card-stats" style="background-color:rgb(80, 121, 245);color:antiquewhite;">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="fa fa-tachometer" style="font-size:48px"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Expenses</b></p>
+                          <p class="card-title" style="text-align: center;font-size:24px;">
+                            <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
+                            {{dashboard.expenses}}
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+  
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding:1em;">
+        <div class="card card-stats" style="background-color:rgb(245, 80, 80);color:antiquewhite;">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="fa fa-briefcase" style="font-size:48px"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Balance</b></p>
+                          <p class="card-title" style="text-align: center;font-size:24px;">
+                            <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
+                            {{dashboard.balance}}
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <div class="col-lg-6 col-md-6 col-sm-12 custom-chart text-center">
+          <canvas baseChart
+            [datasets]="expensesBasedChartData"
+            [labels]="expensesBasedChartLabels"
+            [options]="expensesBasedChartOptions"
+            [plugins]="expensesBasedChartPlugins"
+            [legend]="expensesBasedChartLegend">
+          </canvas>
+          <label style="text-align: center;"><b>Sales Per Day</b></label>
+      </div> -->
+  
+      <!-- <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 custom-chart text-center">
+        <canvas
+          baseChart
+          [data]="PaymentTypePieChartData"
+          [colors]="PaymentTypePieChartColors"
+          [labels]="PaymentTypePieChartLabels"
+          [chartType]="PaymentTypePieChartType"
+          [options]="PaymentTypePieChartOptions"
+          [plugins]="PaymentTypePieChartPlugins"
+          [legend]="PaymentTypePieChartLegend">
+        </canvas>
+        <label style="text-align: center;"><b>Payment Type</b></label>
+      </div> -->
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <br/>
     <table class="table">
       <thead>
         <tr>

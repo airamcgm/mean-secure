@@ -11,6 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
   {
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
