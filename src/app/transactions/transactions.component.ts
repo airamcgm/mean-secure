@@ -14,7 +14,7 @@ export class TransactionsComponent implements OnInit {
 
   transactions: any;
   dashboard: any;
-
+  linkid:any;
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class TransactionsComponent implements OnInit {
         "Authorization" : localStorage.getItem('jwtToken') ?? ""
       })
     };
-    this.http.get('/api/transaction', httpOptions).subscribe(data => {
+    this.http.get(`/api/transaction/${this.linkid}`, httpOptions).subscribe(data => {
       this.transactions = data;
       console.log(this.transactions);
     }, err => {

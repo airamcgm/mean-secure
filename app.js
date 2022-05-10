@@ -50,7 +50,7 @@ app.get('/api/belvotoken', function(req, res) {
   }
 });
 
-app.get('/api/transaction', function(req, res) {
+app.get('/api/transaction/:linkid', function(req, res) {
   var token = true;
   if (token) {
     var client = new belvo(
@@ -60,7 +60,11 @@ app.get('/api/transaction', function(req, res) {
     );
     client.connect()
       .then(function () {
-        client.transactions.list()
+        client.transactions.list({
+          filters: {
+            link: req.params.linkid
+          }
+        })
           .then(function (res) {
             console.log(res);
           })
