@@ -126,7 +126,7 @@ router.get('/dashboard', passport.authenticate('jwt', { session: false}), functi
   }
 });
 
-router.post('/transaction', passport.authenticate('jwt', { session: false}), function(req, res) {
+/*router.post('/transaction', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
   if (token) {
     console.log(req.body);
@@ -148,8 +148,8 @@ router.post('/transaction', passport.authenticate('jwt', { session: false}), fun
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
-
-router.get('/transaction', passport.authenticate('jwt', { session: false}), function(req, res) {
+*/
+/*router.get('/transaction', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
   if (token) {
     Transaction.find(function (err, transaction) {
@@ -159,7 +159,7 @@ router.get('/transaction', passport.authenticate('jwt', { session: false}), func
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
-});
+});*/
 
 
 getToken = function (headers) {
