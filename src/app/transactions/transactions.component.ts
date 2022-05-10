@@ -40,12 +40,12 @@ export class TransactionsComponent implements OnInit {
         this.router.navigate(['login']);
       }
     });
+
   }
 
   logout() {
     localStorage.removeItem('jwtToken');
     this.router.navigate(['login']);
   }
-
 
 }

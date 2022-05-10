@@ -12,6 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { HomeComponent } from './home/home.component';
+import { BelvoWidgetComponent } from './belvo-widget/belvo-widget.component';
 
 const appRoutes: Routes = [
   {
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     SignupComponent,
     DashboardComponent,
     TransactionsComponent,
-    HomeComponent
+    HomeComponent,
+    BelvoWidgetComponent
   ],
   imports: [
     BrowserModule,
