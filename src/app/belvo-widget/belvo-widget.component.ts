@@ -31,24 +31,27 @@ async function createWidget() {
   }
 
 
-  //const successCallbackFunction = (link, institution) => {
+  const successCallbackFunction = (link:any, institution:any) => {
+    console.log(link);
       // Do something with the link and institution,
       // such as associate it with your registered user in your database.
-  //}
-  //const onExitCallbackFunction = (data) => {
+  }
+  const onExitCallbackFunction = (data:any) => {
+      console.log(data);
       // Do something with the exit data.
-  //}
-  //const onEventCallbackFunction = (data) => {
+  }
+  const onEventCallbackFunction = (data:any) => {
+    console.log(data);
       // Do something with the exit data.
-  //}
+  }
 
   const config = {
 
       // Add your startup configuration here.
 
-     // callback: (link, institution) => successCallbackFunction(link, institution),
-      //onExit: (data) => onExitCallbackFunction(),
-     // onEvent: (data) => onEventCallbackFunction()
+      callback: (link:any, institution:any) => successCallbackFunction(link, institution),
+      onExit: (data:any) => onExitCallbackFunction(data),
+      onEvent: (data:any) => onEventCallbackFunction(data)
   }
   const { access } = await getAccessToken();
   // @ts-ignore

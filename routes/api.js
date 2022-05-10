@@ -175,30 +175,4 @@ getToken = function (headers) {
   }
 };
 
-router.get('/belvotoken', function(req, res) {
-  var token = true;
-  if (token) {
-    var client = new belvo(
-      'a091cfa6-d0f8-45e2-a3ff-ed72443f387c',
-      'q0R#fivWnKDwOMSdXJS6Il_A4wxEGrfna*0N-DsA5gEAErD2TW-S8Gm8#JCmTea@',
-      'sandbox'
-    );
-    console.log(client);
-    client.connect()
-      .then(function () {
-            client.widgetToken.create()
-          .then((response) => {
-          res.json(response);
-            })
-          .catch((error) => {
-          res.status(500).send({
-            message: error.message
-          });
-        });
-    });  
-  } else {
-    return res.status(403).send({success: false, msg: 'Unauthorized.'});
-  }
-});
-
 module.exports = router;

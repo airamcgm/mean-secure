@@ -11,6 +11,7 @@ var config = require('./config/database');
 
 var api = require('./routes/api');
 var app = express();
+var belvo = require("belvo").default;
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://127.0.0.1/mean-secure')
@@ -24,6 +25,32 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/', express.static(path.join(__dirname, 'dist/mean-secure')));
 app.use('/api', api);
 app.use(passport.initialize());
+app.get('/api/belvotoken', function(req, res) {
+  var token = true;
+  if (token) {
+    var client = new belvo(
+      'a091cfa6-d0f8-45e2-a3ff-ed72443f387c',
+      'q0R#fivWnKDwOMSdXJS6Il_A4wxEGrfna*0N-DsA5gEAErD2TW-S8Gm8#JCmTea@',
+      'sandbox'
+    );
+    console.log(client);
+    client.connect()
+      .then(function () {
+            client.widgetToken.create()
+          .then((response) => {
+          res.json(response);
+            })
+          .catch((error) => { console.log(error.message);
+          res.status(500).send({
+            message: error.message
+          });
+        });
+    });  
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -32,15 +59,5 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.json({ error: err });
-});
 
 module.exports = app;
