@@ -29,21 +29,14 @@ export class TransactionsComponent implements OnInit {
 
   linkidFunction(data:any){
     this.linkid=data;
-    console.log(this.linkid);
-    console.log(this.transactions);
-    let httpOptions = {
-      headers: new HttpHeaders({
-        "Authorization" : localStorage.getItem('jwtToken') ?? ""
-      })
-    };
-    this.http.get(`/api/transaction/${this.linkid}`, httpOptions).subscribe(data => {
-      this.transactions = data;
-      console.log("transaaaactions"+this.transactions);
-    }, err => {
-      if(err.status === 401) {
-        this.router.navigate(['login']);
-      }
-    });
+    fetch(`/api/transaction/${this.linkid}`, {
+      method: 'GET'
+    })
+    .then(response => response.json())
+    .then((data) => this.transactions=data)
+    .catch(error => console.error('Error:', error))
   }
 
 }
+
+

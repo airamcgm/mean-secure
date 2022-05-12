@@ -65,8 +65,8 @@ app.get('/api/transaction/:linkid', function(req, res) {
             link: req.params.linkid
           }
         })
-          .then(function (res) {
-            console.log(res);
+          .then(function (response) {
+            return res.json(response);
           })
           .catch(function (error) {
             console.log(error);
@@ -93,7 +93,7 @@ app.get('/api/account/:linkid', function(req, res) {
         }
       })
         .then(function (res) {
-          console.log(res);
+          return res.json(response);
         })
         .catch(function (error) {
           console.log(error);
@@ -120,11 +120,37 @@ app.get('/api/owner/:linkid', function(req, res) {
         }
       })
         .then(function (res) {
-          console.log(res);
+          return res.json(response);
         })
         .catch(function (error) {
           console.log(error);
         });
+  });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+app.get('/api/owner/:balance', function(req, res) {
+  var token = true;
+  if (token) {
+    var client = new belvo(
+      'a091cfa6-d0f8-45e2-a3ff-ed72443f387c',
+      'q0R#fivWnKDwOMSdXJS6Il_A4wxEGrfna*0N-DsA5gEAErD2TW-S8Gm8#JCmTea@',
+      'sandbox'
+    );
+    client.connect()
+    .then(function () {
+      client.balances.list({
+        filters: {
+          link: req.params.linkid
+        }
+      })
+      .then(function (res) {
+        return res.json(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
