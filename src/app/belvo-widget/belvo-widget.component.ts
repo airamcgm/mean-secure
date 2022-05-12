@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-belvo-widget',
@@ -6,16 +7,30 @@ import { Component, OnInit } from '@angular/core';
      <div class="content" role="main">
         <div id="belvo"></div>
      </div>
+     <button (click)="sendData()" class="btn btn-success">Get transactions</button>
    `,
   styleUrls: ['./belvo-widget.component.css']
 })
+
 export class BelvoWidgetComponent implements OnInit {
+
+@Output() linkidFunction:EventEmitter<any>= new EventEmitter();
+  
   title = 'widget-angular';
   // implemented method
+  
   ngOnInit(): void {
+    
     loadScript('https://cdn.belvo.io/belvo-widget-1-stable.js');
+
+    
+  }
+  sendData(){
+    this.linkidFunction.emit(link_id);
   }
 }
+
+var link_id:any;
 
 // Insert the following code after AppComponent() class from Step 1.
 async function createWidget() {
@@ -32,7 +47,8 @@ async function createWidget() {
 
 
   const successCallbackFunction = (link:any, institution:any) => {
-    console.log(link);
+    link_id=link;
+    console.log("Link_id "+link_id);
       // Do something with the link and institution,
       // such as associate it with your registered user in your database.
   }

@@ -16,7 +16,7 @@
                             <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Income</b></p>
                             <p class="card-title" style="text-align: center;font-size:24px;">
                               <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
-                              {{dashboard.income}}
+                             
                             </p>
                           </div>
                       </div>
@@ -39,7 +39,7 @@
                           <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Expenses</b></p>
                           <p class="card-title" style="text-align: center;font-size:24px;">
                             <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
-                            {{dashboard.expenses}}
+                   
                           </p>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                           <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Balance</b></p>
                           <p class="card-title" style="text-align: center;font-size:24px;">
                             <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
-                            {{dashboard.balance}}
+              
                           </p>
                         </div>
                     </div>
@@ -101,24 +101,22 @@
   <br/>
   <br/>
   <br/>
-  <app-belvo-widget></app-belvo-widget>
-    <table class="table">
+  <app-belvo-widget (linkidFunction)="linkidFunction($event)"></app-belvo-widget>
+      <table class="table">
       <thead>
         <tr>
-          <th>Date</th>
+          <th>Dates</th>
           <th>Transaction</th>
-          <th>Withdraw</th>
+          <th>Amount</th>
           <th>Deposit</th>
-          <th>Balance</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let transaction of transactions">
-          <td>{{ transaction.date }}</td>
-          <td>{{ transaction.transaction }}</td>
-          <td>{{ transaction.withdraw }}</td>
-          <td>{{ transaction.deposit }}</td>
-          <td>{{ transaction.balance }}</td>
+          <td>{{ transaction.type}}</td>
+          <td>{{ transaction.amount}}</td>
+          <td>{{ transaction.status}}</td>
+          <td>{{ transaction.description }}</td>
         </tr>
       </tbody>
     </table>

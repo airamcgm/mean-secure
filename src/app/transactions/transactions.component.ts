@@ -18,6 +18,19 @@ export class TransactionsComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+
+
+  }
+
+  logout() {
+    localStorage.removeItem('jwtToken');
+    this.router.navigate(['login']);
+  }
+
+  linkidFunction(data:any){
+    this.linkid=data;
+    console.log(this.linkid);
+    console.log(this.transactions);
     let httpOptions = {
       headers: new HttpHeaders({
         "Authorization" : localStorage.getItem('jwtToken') ?? ""
@@ -25,27 +38,12 @@ export class TransactionsComponent implements OnInit {
     };
     this.http.get(`/api/transaction/${this.linkid}`, httpOptions).subscribe(data => {
       this.transactions = data;
-      console.log(this.transactions);
+      console.log("transaaaactions"+this.transactions);
     }, err => {
       if(err.status === 401) {
         this.router.navigate(['login']);
       }
     });
-
-    this.http.get('/api/dashboard', httpOptions).subscribe(data => {
-      this.dashboard = data;
-      console.log(this.dashboard);
-    }, err => {
-      if(err.status === 401) {
-        this.router.navigate(['login']);
-      }
-    });
-
-  }
-
-  logout() {
-    localStorage.removeItem('jwtToken');
-    this.router.navigate(['login']);
   }
 
 }
