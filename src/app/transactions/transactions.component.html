@@ -1,73 +1,84 @@
 <div class="container">
-  <h1>Transactions <button class="btn btn-success" (click)="logout()">Logout</button></h1>
+  <h1>Financial data </h1> 
+  <div style="float:right">
+    <app-belvo-widget (linkidFunction)="linkidFunction($event)"></app-belvo-widget>
+    <button style="margin:0em 1em 0 1em" class="btn btn-dark" (click)="logout()">Logout</button>
+  </div>
   <div class="main-content" style="padding:1em;">
     <div class="row" >
-      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding:1em;">
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding:2.5em 1em 1em 0;">
           <div class="card card-stats" style="background-color:rgb(134, 52, 164);color:antiquewhite;">
+            <button (click)="setFlag(1)" class="noButtonStyle">
               <div class="card-body ">
-                  <div class="row">
-                      <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="fa fa-money" style="font-size:48px"></i>
-                          </div>
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="fa fa-money" style="font-size:48px"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Owners</b></p>
+                          <p class="card-title" style="text-align: center;font-size:24px;">
+                            <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
+                            {{countOwners}}
+                           
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </button>
+          </div>
+      </div>
+  
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding:2.5em 1em 1em 0;">
+        <div class="card card-stats" style="background-color:rgb(80, 121, 245);color:antiquewhite;">
+          <button (click)="setFlag(2)" class="noButtonStyle">
+            <div class="card-body ">
+              <div class="row">
+                  <div class="col-5 col-md-4">
+                      <div class="icon-big text-center icon-warning">
+                        <i class="fa fa-tachometer" style="font-size:48px"></i>
                       </div>
-                      <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Owners</b></p>
-                            <p class="card-title" style="text-align: center;font-size:24px;">
-                              <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
-                             
-                            </p>
-                          </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                      <div class="numbers">
+                        <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Accounts</b></p>
+                        <p class="card-title" style="text-align: center;font-size:24px;">
+                          <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
+                            {{countAccounts}}
+                        </p>
                       </div>
                   </div>
               </div>
           </div>
-      </div>
-  
-      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding:1em;">
-        <div class="card card-stats" style="background-color:rgb(80, 121, 245);color:antiquewhite;">
-            <div class="card-body ">
-                <div class="row">
-                    <div class="col-5 col-md-4">
-                        <div class="icon-big text-center icon-warning">
-                          <i class="fa fa-tachometer" style="font-size:48px"></i>
-                        </div>
-                    </div>
-                    <div class="col-7 col-md-8">
-                        <div class="numbers">
-                          <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Account</b></p>
-                          <p class="card-title" style="text-align: center;font-size:24px;">
-                            <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
-                   
-                          </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </button>
           </div>
       </div>
   
-      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding:1em;">
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding:1em 1em 1em 0;">
         <div class="card card-stats" style="background-color:rgb(245, 80, 80);color:antiquewhite;">
+          <button (click)="setFlag(3)" class="noButtonStyle">
             <div class="card-body ">
-                <div class="row">
-                    <div class="col-5 col-md-4">
-                        <div class="icon-big text-center icon-warning">
-                          <i class="fa fa-briefcase" style="font-size:48px"></i>
-                        </div>
-                    </div>
-                    <div class="col-7 col-md-8">
-                        <div class="numbers">
-                          <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Balance</b></p>
-                          <p class="card-title" style="text-align: center;font-size:24px;">
-                            <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
-              
-                          </p>
-                        </div>
-                    </div>
-                </div>
+              <div class="row">
+                  <div class="col-5 col-md-4">
+                      <div class="icon-big text-center icon-warning">
+                        <i class="fa fa-briefcase" style="font-size:48px"></i>
+                      </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                      <div class="numbers">
+                        <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Transactions</b></p>
+                        <p class="card-title" style="text-align: center;font-size:24px;">
+                          <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
+                            {{countTransactions}}
+                        </p>
+                      </div>
+                  </div>
+              </div>
             </div>
+          </button>
         </div>
       </div>
     </div>
@@ -98,33 +109,133 @@
       </div> -->
     </div>
   </div>
-  <br/>
-  <br/>
-  <br/>
-  <app-belvo-widget (linkidFunction)="linkidFunction($event)"></app-belvo-widget>
-      <div class="tableFixHead">
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Amount</th>
-              <th>Currency</th>
-              <th>Status</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let transaction of transactions">
-              <td>{{ transaction.value_date}}</td>
-              <td>{{ transaction.type}}</td>
-              <td>{{ transaction.amount}}</td>
-              <td>{{ transaction.currency}}</td>
-              <td>{{ transaction.status}}</td>
-              <td>{{ transaction.description }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <div *ngIf="opc==1">
+    <h2>Owners List</h2>
+    <div class="tableFixHead">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Document Type</th>
+            <th>Document Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let owner of owners">
+            <td>{{ owner.display_name}}</td>
+            <td>{{ owner.email}}</td>
+            <td>{{ owner.address}}</td>
+            <td>{{ owner.phone_number}}</td>
+            <td>{{ owner.document_id.document_type}}</td>
+            <td>{{ owner.document_id.document_number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+  <div *ngIf="opc==2">
+    <h2>Accounts List</h2>
+    <div class="tableFixHead">
+      <table>
+        <thead>
+          <tr>
+            <th>Institution</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Balance</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let account of accounts">
+            <td>{{ account.institution.name}}</td>
+            <td>{{ account.name}}</td>
+            <td>{{ account.type}}</td>
+            <td>{{ account.balance.current}}</td>
+            <td>{{ account.currency}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="opc==3">
+    <h2>Transactions List</h2>
+    <div class="tableFixHead">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Currency</th>
+            <th>Status</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of transactions">
+            <td>{{ transaction.value_date}}</td>
+            <td>{{ transaction.type}}</td>
+            <td>{{ transaction.amount}}</td>
+            <td>{{ transaction.currency}}</td>
+            <td>{{ transaction.status}}</td>
+            <td>{{ transaction.description }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="opc==3" class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding:2.5em 1em 1em 0;float:right">
+    <div class="card card-stats" style="background-color:rgb(82, 185, 199);color:antiquewhite;">
+        <div class="card-body ">
+          <div class="row">
+              <div class="col-12 col-md-12" style="padding:1rem 0 0 4rem;">
+                    <p>We review you credit history and you have a:</p>
+              </div>
+              <div class="col-12 col-md-12" style="margin:0 0 0 6rem">
+                  <div class="numbers">
+                    <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Pre-approved Credit:</b></p>
+                    <p class="card-title" style="text-align: center;font-size:24px;">
+                      <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
+                      $ 30,000 
+                    </p>
+                  </div>
+              </div>
+          </div>
+        </div>
+        
+    </div>
+    <div style="float:right;padding-top: 1em;">
+      <button style="margin:0em 1em 0 1em" class="btn btn-danger" (click)="logout()">Decline</button>
+      <button style="margin:0em 1em 0 1em" type="button" class="btn btn-primary" (click)="openPopup()">
+        Agree
+      </button>
+      <div
+        class="modal"
+        tabindex="-1"
+        role="dialog"
+        [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Congratulations!</h4>
+            </div>
+            <div class="modal-body">
+              <p>You have agreed to continue with the request for your pre-approved credit, we will contact you within 5 business days</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" 
+                      (click)="closePopup()">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 

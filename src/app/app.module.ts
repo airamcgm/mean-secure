@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { HomeComponent } from './home/home.component';
 import { BelvoWidgetComponent } from './belvo-widget/belvo-widget.component';
+import { NgChartsModule } from 'ng2-charts';
 
 const appRoutes: Routes = [
   {
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgChartsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only

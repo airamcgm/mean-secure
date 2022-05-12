@@ -7,7 +7,7 @@ import { Output, EventEmitter } from '@angular/core';
      <div class="content" role="main">
         <div id="belvo"></div>
      </div>
-     <button (click)="sendData()" class="btn btn-success">Get transactions</button>
+     <button (click)="sendData()" class="btn btn-primary">Refresh</button>
    `,
   styleUrls: ['./belvo-widget.component.css']
 })

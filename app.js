@@ -92,7 +92,7 @@ app.get('/api/account/:linkid', function(req, res) {
           link: req.params.linkid
         }
       })
-        .then(function (res) {
+        .then(function (response) {
           return res.json(response);
         })
         .catch(function (error) {
@@ -119,7 +119,7 @@ app.get('/api/owner/:linkid', function(req, res) {
           link: req.params.linkid
         }
       })
-        .then(function (res) {
+        .then(function (response) {
           return res.json(response);
         })
         .catch(function (error) {
@@ -130,7 +130,7 @@ app.get('/api/owner/:linkid', function(req, res) {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
-app.get('/api/owner/:balance', function(req, res) {
+app.get('/api/balance/:linkid', function(req, res) {
   var token = true;
   if (token) {
     var client = new belvo(
@@ -145,7 +145,8 @@ app.get('/api/owner/:balance', function(req, res) {
           link: req.params.linkid
         }
       })
-      .then(function (res) {
+      .then(function (response) {
+        console.log(response);
         return res.json(response);
       })
       .catch(function (error) {
