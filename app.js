@@ -157,6 +157,29 @@ app.get('/api/balance/:linkid', function(req, res) {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
+app.get('/api/delete/:linkid', function(req, res) {
+  var token = true;
+  if (token) {
+    var client = new belvo(
+      'a091cfa6-d0f8-45e2-a3ff-ed72443f387c',
+      'q0R#fivWnKDwOMSdXJS6Il_A4wxEGrfna*0N-DsA5gEAErD2TW-S8Gm8#JCmTea@',
+      'sandbox'
+    );
+    client.connect()
+    .then(function () {
+      client.links.delete(req.params.linkid)
+      .then(function (response) {
+        console.log(response);
+        return res.json(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

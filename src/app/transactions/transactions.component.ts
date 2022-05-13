@@ -92,6 +92,16 @@ export class TransactionsComponent implements OnInit {
     .catch(error => console.error('Error:', error))
   }
 
+  deleteLink(){
+    fetch(`/api/delete/${this.linkid}`, {
+      method: 'GET'
+    })
+    .then(response => response.json())
+    .then((data) => this.logout())
+    .catch(error => console.error('Error:', error))
+    
+  }
+
   setFlag(opc:any){
     this.opc=opc;
   }
