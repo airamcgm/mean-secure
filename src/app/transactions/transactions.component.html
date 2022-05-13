@@ -11,17 +11,12 @@
             <button (click)="setFlag(1)" class="noButtonStyle">
               <div class="card-body ">
                 <div class="row">
-                    <div class="col-5 col-md-4">
-                        <div class="icon-big text-center icon-warning">
-                          <i class="fa fa-money" style="font-size:48px"></i>
-                        </div>
-                    </div>
-                    <div class="col-7 col-md-8">
+                    <div class="col-12 col-md-12">
                         <div class="numbers">
-                          <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Owners</b></p>
+                          <p class="card-category" style="padding-left:1rem;color:antiquewhite;font-size:24px;"><b>Owners</b></p>
                           <p class="card-title" style="text-align: center;font-size:24px;">
                             <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
-                            {{countOwners}}
+                              <span *ngFor="let owner of owners">{{ owner.display_name}}</span>
                            
                           </p>
                         </div>
@@ -110,7 +105,7 @@
     </div>
   </div>
   <div *ngIf="opc==1">
-    <h2>Owners List</h2>
+    <h2>Owner Information</h2>
     <div class="tableFixHead">
       <table>
         <thead>
@@ -200,7 +195,7 @@
                     <p class="card-category" style="color:antiquewhite;font-size:24px;"><b>Pre-approved Credit:</b></p>
                     <p class="card-title" style="text-align: center;font-size:24px;">
                       <i class="fa fa-inr fa-lg" aria-hidden="true"></i> &nbsp;
-                      $ 30,000 
+                      {{approved_amount | number : '1.2-2'}} {{balances[0].account.currency}}
                     </p>
                   </div>
               </div>

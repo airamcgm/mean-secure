@@ -4,9 +4,9 @@ import { Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-belvo-widget',
   template: `
-     <div class="content" role="main">
-        <div id="belvo"></div>
-     </div>
+    <div class="content" role="main">
+      <div id="belvo"></div>
+    </div>
      <button (click)="sendData()" class="btn btn-primary">Refresh</button>
    `,
   styleUrls: ['./belvo-widget.component.css']

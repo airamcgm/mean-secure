@@ -22,6 +22,7 @@ export class TransactionsComponent implements OnInit {
   dashboard: any;
   linkid:any;
   opc:any;
+  approved_amount:any;
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
@@ -57,7 +58,7 @@ export class TransactionsComponent implements OnInit {
       method: 'GET'
     })
     .then(response => response.json())
-    .then((data) => {this.transactions=data;this.countTransactions=Object.keys(this.transactions).length;console.log(this.transactions)})
+    .then((data) => {this.transactions=data;this.countTransactions=Object.keys(this.transactions).length;})
     .catch(error => console.error('Error:', error))
 
   }
@@ -67,7 +68,7 @@ export class TransactionsComponent implements OnInit {
       method: 'GET'
     })
     .then(response => response.json())
-    .then((data) => {this.accounts=data;this.countAccounts=Object.keys(this.accounts).length;console.log(this.accounts)})
+    .then((data) => {this.accounts=data;this.countAccounts=Object.keys(this.accounts).length;})
     .catch(error => console.error('Error:', error))
 
     
@@ -78,17 +79,24 @@ export class TransactionsComponent implements OnInit {
       method: 'GET'
     })
     .then(response => response.json())
-    .then((data) => {this.owners=data;this.countOwners=Object.keys(this.owners).length;console.log(this.owners)})
+    .then((data) => {this.owners=data;this.countOwners=Object.keys(this.owners).length;})
     .catch(error => console.error('Error:', error))
 
   }
 
   getBalance(){
+    var total_balance=0;
     fetch(`/api/balance/${this.linkid}`, {
       method: 'GET'
     })
     .then(response => response.json())
-    .then((data) => {this.balances=data;console.log(this.balances)})
+    .then((data) => {
+      this.balances=data;
+      for (let i = 0; i < Object.keys(this.balances).length; i++) {
+        total_balance=this.balances[i].current_balance+total_balance;
+      }
+      this.approved_amount=(total_balance/Object.keys(this.balances).length)*2
+    })
     .catch(error => console.error('Error:', error))
   }
 

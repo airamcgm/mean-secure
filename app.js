@@ -142,7 +142,8 @@ app.get('/api/balance/:linkid', function(req, res) {
     .then(function () {
       client.balances.list({
         filters: {
-          link: req.params.linkid
+          link: req.params.linkid,
+          value_date__gt:"2021-05-01"
         }
       })
       .then(function (response) {
